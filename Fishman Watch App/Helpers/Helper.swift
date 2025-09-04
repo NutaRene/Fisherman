@@ -5,7 +5,7 @@
 //  Created by Раис Аглиуллов on 10.08.2025.
 //
 
-import Foundation
+import SwiftUI
 import WatchKit
 
 struct Helper {
@@ -15,6 +15,8 @@ struct Helper {
     
     static let hookButtonHeight: CGFloat = 30.0
     static let toolbarButtonHeight: CGFloat = 25.0
+    
+    static let fishingLineColor: Color = Color.init(hex: "#574A45")
     
     static let nonPredatoryFishImageNames: [String] = ["NP1", "NP2", "NP3", "NP4", "NP5", "NP6", "NP7", "NP8", "NP9", "NP10", "NP11", "NP12", "NP13", "NP14", "NP15", "NP16", "NP17", "NP18"]
     

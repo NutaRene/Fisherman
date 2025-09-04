@@ -28,14 +28,24 @@ struct BoatView: View {
                 )
                 .focusable(!self.viewModel.isCatching)
             
+            let xPosition = self.viewModel.getFishLineXPosition(for: proxy.size.width)
+            let lineTopY = self.viewModel.fishingLineMinY
+            let lineBottomY = self.viewModel.fishingLineMinY + self.viewModel.fishingLineHeight
+            
             if self.viewModel.isCatching {
-                Rectangle().foregroundStyle(.red)
-                    .frame(width: 3, height: self.viewModel.fishingLineHeight, alignment: .top)
-                    .position(
-                        x: self.viewModel.getFishLineXPosition(for: proxy.size.width),
-                        y: self.viewModel.fishingLineMinY + (self.viewModel.fishingLineHeight / 2)
-                    )
+                FishingLineView(
+                    topY: lineTopY,
+                    bottomY: lineBottomY,
+                    xPosition: xPosition,
+                    color: Helper.fishingLineColor,
+                    lineWidth: 1
+                )
             }
+            Image("Hook")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 15, height: 15, alignment: .center)
+                .position(x: xPosition + 2, y: lineBottomY + 4)
         }
         .digitalCrownRotation($viewModel.crownValue, from: -1.0, through: 1.0, by: 0.002, sensitivity: .low, isContinuous: false)
     }
